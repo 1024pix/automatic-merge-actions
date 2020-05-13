@@ -9,10 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: |
-          pwd
-          ls -lrta
-          git status
       - name: Automatic Rebase
         uses: cirrus-actions/rebase@1.3
         env:
