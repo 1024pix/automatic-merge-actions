@@ -12,8 +12,6 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
-      - run: git config --global user.email ${{ secrets.ACTION_USER_EMAIL }}
-      - run: git config --global user.name ${{ secrets.ACTION_USER_NAME }}
       - run: git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} ./
       - run: ls -lrta
       - run: git checkout ${{ github.event.pull_request.head.ref }}
