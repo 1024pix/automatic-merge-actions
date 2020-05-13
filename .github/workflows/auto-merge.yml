@@ -14,7 +14,6 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
       - run: git clone ${{ github.repositoryUrl }} ./
       - run: ls -lrta
-      - run: git fetch origin
-      - run: git branch
-      - run: git checkout origin/${{ github.event.pull_request.head.ref }}
+      - run: git checkout ${{ github.event.pull_request.head.ref }}
       - run: git log
+      - run: git rebase origin/master
