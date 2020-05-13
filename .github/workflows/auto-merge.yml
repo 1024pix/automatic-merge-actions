@@ -13,4 +13,5 @@ jobs:
           pwd
           ls -lrta
           git status
+          git remote -v
           git rebase origin/master
