@@ -8,15 +8,9 @@ jobs:
     # if: github.event.label.name == 'Ready to merge'
     runs-on: ubuntu-latest
     steps:
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-      - run: git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} ./
-      - run: ls -lrta
-      - run: git checkout ${{ github.event.pull_request.head.ref }}
-      - run: git log
-      - run: git rebase origin/master
-      - run: git log
-      - run: git push --force-with-lease
+      - name: Rebase on base branch
+        run: git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} ./
+        run: git checkout ${{ github.event.pull_request.head.ref }}
+        run: git rebase origin/master
+        run: git push --force-with-lease
 
