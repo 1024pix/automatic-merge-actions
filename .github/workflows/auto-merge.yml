@@ -13,5 +13,5 @@ jobs:
           pwd
           ls -lrta
           git status
-          git remote -v
-          git rebase origin/master
+      - name: Automatic Rebase
+        uses: cirrus-actions/rebase@1.3
