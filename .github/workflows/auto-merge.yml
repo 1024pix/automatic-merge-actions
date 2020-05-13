@@ -12,8 +12,12 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
-      - run: git clone https://x-access-token:${{ GITHUB_TOKEN }}@github.com/${{ github.repository }} ./
+      - run: git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} ./
       - run: git checkout ${{ github.event.pull_request.head.ref }}
       - run: git rebase ${{ github.event.pull_request.base.ref }}
       - run: git push --force-with-lease
+      - run: git checkout ${{ github.event.pull_request.base.ref }}
+      - run: git merge ${{ github.event.pull_request.head.ref }}
+      - run: git push
+      
 
