@@ -4,6 +4,7 @@ on:
 
 jobs:
   auto-merge:
+    if: github.event.label.name == 'Ready to merge'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
