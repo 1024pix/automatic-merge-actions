@@ -7,7 +7,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Automatic Rebase
-        uses: cirrus-actions/rebase@1.2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: |
+          echo "GITHUB_EVENT_PATH=" $GITHUB_EVENT_PATH
