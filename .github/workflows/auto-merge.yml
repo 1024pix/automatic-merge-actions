@@ -16,4 +16,4 @@ jobs:
       - run: git checkout HEAD
       - run: git log
       - run: git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
-      - run: git rebase origin/master
+      - run: git rebase --onto origin/master
