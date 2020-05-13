@@ -1,3 +1,4 @@
 # automatic-merge-actions
 
-Use github actions
+Use github actions with:
+ - actions/checkout@v2
