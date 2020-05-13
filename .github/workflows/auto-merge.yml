@@ -12,3 +12,4 @@ jobs:
       - run: |
           pwd
           ls -lrta
+          git rebase master
