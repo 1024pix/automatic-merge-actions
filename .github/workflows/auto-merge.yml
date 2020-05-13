@@ -8,12 +8,15 @@ jobs:
     # if: github.event.label.name == 'Ready to merge'
     runs-on: ubuntu-latest
     steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
       - run: git log
-      - run: git checkout HEAD
+      - run: git checkout HEAD~1
       - run: git log
-      - run: git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
       - run: git rebase --onto origin/master
