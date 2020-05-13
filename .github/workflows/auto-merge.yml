@@ -1,11 +1,17 @@
-name: AUTO_MERGE
 on:
-  pull_request:
-
+  issue_comment:
+    types: [created]
+name: Automatic Rebase
 jobs:
-  auto-merge:
+  rebase:
+    name: Rebase
+    if: github.event.issue.pull_request != '' && contains(github.event.comment.body, '/rebase')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - run: |
-          echo "GITHUB_EVENT_PATH=" $GITHUB_EVENT_PATH
+        with:
+          fetch-depth: 0
+      - name: Automatic Rebase
+        uses: cirrus-actions/rebase@1.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
