@@ -12,11 +12,13 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
-      - run: git config --global user.email "you@example.com"
-      - run: git config --global user.name "Your Name"
+      - run: git config --global user.email ${{ secrets.ACTION_USER_EMAIL }}
+      - run: git config --global user.name ${{ secrets.ACTION_USER_NAME }}
       - run: git clone ${{ github.repositoryUrl }} ./
       - run: ls -lrta
       - run: git checkout ${{ github.event.pull_request.head.ref }}
       - run: git log
       - run: git rebase origin/master
       - run: git log
+      - run: git push --force-with-lease
+
