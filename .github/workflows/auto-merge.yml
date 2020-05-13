@@ -10,6 +10,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          echo "It works"
-          echo "It works 2"
-          echo "It works 3"
+          git fetch origin
+          git rebase origin/master
