@@ -1,0 +1,15 @@
+name: ci
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: automerge
+        run: |
+          echo "Running CI..."
+          sleep 90
+          echo "CI OK"
