@@ -3,3 +3,5 @@
 https://github-actions.explore-tech.org/automerge
 
 :tada:
+
+CI ok
