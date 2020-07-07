@@ -9,3 +9,5 @@ TEST
 merge-with-conflicts
 merge-with-conflicts
 merge-with-conflicts
+
+merge-6
