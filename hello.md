@@ -11,3 +11,4 @@ merge-with-conflicts
 merge-with-conflicts
 
 merge-6
+merge-8
