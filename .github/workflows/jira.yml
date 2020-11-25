@@ -41,6 +41,9 @@ jobs:
         fetch-depth: 0
 
     - name: Count PRs since last tag
-      run: |
-        count=$(git rev-list --merges --count $(git describe --tags --abbrev=0)..HEAD)
-        echo "$count"
+      id: count
+      run: echo ::set-output name=PR_COUNT::$(git rev-list --merges --count $(git describe --tags --abbrev=0)..HEAD)
+        
+    - name: Alert PR count maximum reached
+      if: ${{ steps.count.outputs.PR_COUNT }} > 5
+      run: echo "${{ steps.count.outputs.PR_COUNT }}"
