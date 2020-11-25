@@ -12,3 +12,5 @@ merge-with-conflicts
 
 merge-6
 merge-8
+
+THIS IS A DEMO
