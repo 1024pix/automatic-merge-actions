@@ -1,4 +1,4 @@
-name: JIRA
+name: Merge on Dev
 on:
   push:
     branches:
@@ -29,3 +29,17 @@ jobs:
       with:
         issue: ${{ steps.find.outputs.issue }}
         transition: "Move to 'Deployed in Staging'"
+
+  pr-alert:
+    name: Check number of PR since last tag
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Count PRs since last tag
+      run: |
+        count=git rev-list --merges --count $(git describe --abbrev=0)..HEAD
+        echo "$count"
