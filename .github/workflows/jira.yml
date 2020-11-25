@@ -28,4 +28,4 @@ jobs:
       uses: atlassian/gajira-transition@master
       with:
         issue: ${{ steps.find.outputs.issue }}
-        transition: "Deployed on Integration"
+        transition: "Move to 'Deployed in Staging'"
